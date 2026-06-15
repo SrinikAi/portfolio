@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Srinivas Kachavarapu — Computer Vision Researcher</title>
-  <meta name="description" content="Computer vision researcher with 4 years of experience building perception and robotics systems. IROS 2025 lead author." />
+  <title>Srinivas Kachavarapu · Computer Vision Researcher</title>
+  <meta name="description" content="Machine learning and computer vision engineer with 4 years of experience training and shipping perception models for robotics and clinical AI. IROS 2025 lead author." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,20 +13,20 @@
   <style>
     /* ============ TOKENS ============ */
     :root {
-      --bg:        #07080d;
-      --panel:     rgba(255,255,255,.03);
-      --panel-hi:  rgba(255,255,255,.06);
-      --line:      rgba(255,255,255,.08);
-      --line-hi:   rgba(255,255,255,.16);
+      --bg:        #eef1f7;
+      --panel:     rgba(15,23,42,.038);
+      --panel-hi:  rgba(15,23,42,.075);
+      --line:      rgba(15,23,42,.14);
+      --line-hi:   rgba(15,23,42,.24);
 
-      --text:      #eef2f8;
-      --text-dim:  #9aa6b8;
-      --text-mut:  #5b6577;
+      --text:      #0d1424;
+      --text-dim:  #3c4658;
+      --text-mut:  #5a6678;
 
-      --cyan:      #4fd6f7;
-      --purple:    #b388ff;
-      --pink:      #ff7eb6;
-      --grad:      linear-gradient(115deg, #4fd6f7 0%, #b388ff 55%, #ff7eb6 100%);
+      --cyan:      #0891b2;
+      --purple:    #7c3aed;
+      --pink:      #db2777;
+      --grad:      linear-gradient(115deg, #0891b2 0%, #7c3aed 55%, #db2777 100%);
 
       --maxw: 1100px;
     }
@@ -49,12 +49,12 @@
     }
     .blob {
       position: absolute; border-radius: 50%;
-      filter: blur(90px); opacity: .42;
-      mix-blend-mode: screen;
+      filter: blur(95px); opacity: .28;
+      mix-blend-mode: multiply;
     }
-    .blob.b1 { width: 560px; height: 560px; background: #1e7fd4; top: -180px; left: -120px; animation: drift1 22s ease-in-out infinite; }
-    .blob.b2 { width: 520px; height: 520px; background: #7c3aed; top: 5%; right: -160px; animation: drift2 26s ease-in-out infinite; }
-    .blob.b3 { width: 460px; height: 460px; background: #db2777; bottom: -180px; left: 30%; animation: drift3 30s ease-in-out infinite; }
+    .blob.b1 { width: 560px; height: 560px; background: #7fb5ec; top: -180px; left: -120px; animation: drift1 22s ease-in-out infinite; }
+    .blob.b2 { width: 520px; height: 520px; background: #c4b5fd; top: 5%; right: -160px; animation: drift2 26s ease-in-out infinite; }
+    .blob.b3 { width: 460px; height: 460px; background: #f9a8d4; bottom: -180px; left: 30%; animation: drift3 30s ease-in-out infinite; }
     @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(120px,80px) scale(1.15)} }
     @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-100px,120px) scale(1.1)} }
     @keyframes drift3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(80px,-90px) scale(1.2)} }
@@ -62,14 +62,14 @@
     /* grain/grid overlay */
     .aurora::after {
       content:''; position:absolute; inset:0;
-      background-image: radial-gradient(circle, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(15,23,42,.04) 1px, transparent 1px);
       background-size: 40px 40px;
     }
 
     /* ---- mouse spotlight ---- */
     .spotlight {
       position: fixed; inset: 0; z-index: 1; pointer-events: none;
-      background: radial-gradient(420px circle at var(--mx,50%) var(--my,30%), rgba(120,180,255,.10), transparent 65%);
+      background: radial-gradient(420px circle at var(--mx,50%) var(--my,30%), rgba(99,140,230,.12), transparent 65%);
       transition: background .12s;
     }
 
@@ -99,7 +99,7 @@
     header {
       position: sticky; top: 0; z-index: 100;
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      background: rgba(7,8,13,.55);
+      background: rgba(238,241,247,.72);
       border-bottom: 1px solid var(--line);
     }
     nav { max-width: var(--maxw); margin: auto; padding: 1.05rem 1.75rem;
@@ -202,7 +202,7 @@
       -webkit-mask-composite: xor; mask-composite: exclude; opacity:0; transition: opacity .25s; }
     .pcard:hover { transform: translateY(-4px); background: var(--panel-hi); }
     .pcard:hover::before { opacity: .8; }
-    .pcard.feature { background: linear-gradient(135deg, rgba(79,214,247,.09), rgba(255,126,182,.08)); }
+    .pcard.feature { background: linear-gradient(135deg, rgba(8,145,178,.09), rgba(219,39,119,.08)); }
     .pc-badge { display: inline-block; font-family:'JetBrains Mono'; font-size: .68rem;
       letter-spacing: .5px; color: var(--cyan); margin-bottom: .65rem; }
     .pc-title { font-family:'Space Grotesk'; font-size: 1.15rem; font-weight: 600; margin-bottom: .5rem; }
@@ -232,7 +232,7 @@
     .sk-item img { width: 30px; height: 30px; object-fit: contain; }
     .sk-box { width: 30px; height: 30px; display:flex; align-items:center; justify-content:center;
       border-radius: 8px; font-family:'JetBrains Mono'; font-size: .58rem; font-weight: 600;
-      line-height: 1.05; text-align: center; background: rgba(79,214,247,.1); color: var(--cyan); }
+      line-height: 1.05; text-align: center; background: rgba(8,145,178,.1); color: var(--cyan); }
     .sk-emoji { width: 30px; height: 30px; display:flex; align-items:center; justify-content:center; font-size: 1.35rem; }
     .sk-item span.l { font-size: .68rem; color: var(--text-mut); text-align: center; line-height: 1.2; }
 
@@ -262,7 +262,7 @@
     .cc:hover { border-color: var(--cyan); background: var(--panel-hi); transform: translateY(-2px); }
     .cc-ic { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
       display:flex; align-items:center; justify-content:center; font-size: 1.1rem;
-      background: rgba(79,214,247,.08); color: var(--cyan); border: 1px solid rgba(79,214,247,.18); }
+      background: rgba(8,145,178,.08); color: var(--cyan); border: 1px solid rgba(8,145,178,.18); }
     .cc-txt { min-width: 0; flex: 1; }
     .cc .k { font-size: .73rem; color: var(--text-mut); margin-bottom: .1rem; }
     .cc .v { font-size: .88rem; font-weight: 600; color: var(--text);
@@ -271,6 +271,97 @@
     footer { border-top: 1px solid var(--line); text-align: center; padding: 2.5rem 1rem;
       font-family:'JetBrains Mono'; font-size: .8rem; color: var(--text-mut); }
     footer .f2 { margin-top: .35rem; opacity: .55; font-size: .72rem; }
+
+    /* ---- clickable project card affordance ---- */
+    .pcard.clickable { cursor: pointer; }
+    .pc-more { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem;
+      font-family:'JetBrains Mono'; font-size: .72rem; font-weight: 500; color: var(--cyan); }
+    .pc-more i { transition: transform .25s; }
+    .pcard.clickable:hover .pc-more i { transform: translateX(4px); }
+
+    /* ============ ARCHITECTURE MODAL ============ */
+    .modal-overlay { position: fixed; inset: 0; z-index: 1000; display: none;
+      background: rgba(20,28,48,.40); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      padding: 2.5rem 1.25rem; overflow-y: auto; }
+    .modal-overlay.open { display: block; animation: fadeIn .3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal { max-width: 980px; margin: auto; background: #ffffff;
+      border: 1px solid var(--line-hi); border-radius: 22px; overflow: hidden;
+      box-shadow: 0 40px 120px rgba(15,23,42,.25); animation: pop .35s cubic-bezier(.2,.8,.2,1); }
+    @keyframes pop { from { transform: translateY(24px) scale(.98); opacity: 0; } to { transform: none; opacity: 1; } }
+    .modal-hd { position: sticky; top: 0; z-index: 5; display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.6rem 1.9rem; border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(8,145,178,.08), rgba(219,39,119,.06)), #ffffff; }
+    .modal-hd .mh-kick { font-family:'JetBrains Mono'; font-size: .7rem; letter-spacing: 1px;
+      color: var(--cyan); text-transform: uppercase; margin-bottom: .4rem; }
+    .modal-hd h3 { font-size: 1.7rem; font-weight: 700; letter-spacing: -.6px; line-height: 1.1; }
+    .modal-hd p { font-size: .9rem; color: var(--text-dim); margin-top: .5rem; max-width: 46rem; }
+    .modal-close { margin-left: auto; flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid var(--line-hi); background: var(--panel); color: var(--text-dim);
+      cursor: pointer; font-size: 1.1rem; transition: all .2s; display:flex; align-items:center; justify-content:center; }
+    .modal-close:hover { color: var(--text); border-color: var(--cyan); transform: rotate(90deg); }
+    .modal-bd { padding: 2rem 1.9rem 2.4rem; }
+    .modal-bd h4 { font-family:'Space Grotesk'; font-size: 1.1rem; font-weight: 600;
+      letter-spacing: -.3px; margin: 2.2rem 0 1rem; display: flex; align-items: center; gap: .6rem; }
+    .modal-bd h4:first-child { margin-top: 0; }
+    .modal-bd h4 i { color: var(--cyan); font-size: .95rem; }
+    .modal-bd p.lede { font-size: .95rem; color: var(--text-dim); line-height: 1.75; }
+
+    /* ---- architecture diagram (CSS nodes) ---- */
+    .arch { background: rgba(255,255,255,.02); border: 1px solid var(--line);
+      border-radius: 16px; padding: 1.8rem 1.4rem; }
+    .arch-row { display: flex; align-items: stretch; justify-content: center; gap: .9rem; flex-wrap: wrap; }
+    .node { flex: 1; min-width: 180px; max-width: 260px; background: var(--panel);
+      border: 1px solid var(--line-hi); border-radius: 14px; padding: 1.1rem 1.15rem; position: relative; }
+    .node.accent { background: linear-gradient(135deg, rgba(8,145,178,.10), rgba(124,58,237,.08));
+      border-color: rgba(8,145,178,.32); }
+    .node .n-ic { width: 34px; height: 34px; border-radius: 9px; display:flex; align-items:center; justify-content:center;
+      background: rgba(8,145,178,.1); color: var(--cyan); font-size: .95rem; margin-bottom: .7rem; }
+    .node .n-t { font-family:'Space Grotesk'; font-weight: 600; font-size: .96rem; margin-bottom: .2rem; }
+    .node .n-s { font-family:'JetBrains Mono'; font-size: .68rem; color: var(--text-mut); margin-bottom: .55rem; }
+    .node .n-d { font-size: .8rem; color: var(--text-dim); line-height: 1.55; }
+    .arch-link { display: flex; flex-direction: column; align-items: center; justify-content: center;
+      flex: 0 0 auto; color: var(--text-mut); min-width: 70px; }
+    .arch-link .al-lbl { font-family:'JetBrains Mono'; font-size: .62rem; color: var(--cyan); margin-bottom: .2rem; }
+    .arch-link i { font-size: 1rem; }
+    .arch-link .al-sub { font-family:'JetBrains Mono'; font-size: .6rem; color: var(--text-mut); margin-top: .2rem; }
+    .arch-down { display: flex; justify-content: center; padding: .4rem 0; color: var(--text-mut); }
+    .arch-sub { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: .9rem; }
+    .arch-cap { font-family:'JetBrains Mono'; font-size: .68rem; color: var(--text-mut);
+      text-align: center; margin-top: 1.1rem; }
+
+    /* ---- "how I built it" step list ---- */
+    .flow { display: grid; gap: .7rem; }
+    .fstep { display: flex; gap: 1rem; align-items: flex-start; background: var(--panel);
+      border: 1px solid var(--line); border-radius: 13px; padding: 1rem 1.2rem; transition: all .2s; }
+    .fstep:hover { border-color: var(--line-hi); background: var(--panel-hi); }
+    .fstep .fn { font-family:'JetBrains Mono'; font-weight: 700; font-size: .95rem;
+      color: var(--cyan); flex-shrink: 0; width: 1.6rem; }
+    .fstep .ft { font-weight: 600; font-size: .9rem; margin-bottom: .2rem; }
+    .fstep .fd { font-size: .82rem; color: var(--text-dim); line-height: 1.55; }
+    .fstep .fd code { font-family:'JetBrains Mono'; font-size: .76rem; color: var(--purple);
+      background: rgba(124,58,237,.08); padding: .05rem .35rem; border-radius: 5px; }
+
+    /* ---- highlight chips (security / impact) ---- */
+    .hl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: .8rem; }
+    .hl { display: flex; gap: .8rem; align-items: flex-start; background: var(--panel);
+      border: 1px solid var(--line); border-radius: 13px; padding: 1rem 1.15rem; }
+    .hl i { color: var(--cyan); font-size: .95rem; margin-top: .15rem; flex-shrink: 0; }
+    .hl .h-t { font-weight: 600; font-size: .85rem; margin-bottom: .15rem; }
+    .hl .h-d { font-size: .78rem; color: var(--text-dim); line-height: 1.5; }
+
+    .stack-row { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .stack-row span { font-family:'JetBrains Mono'; font-size: .74rem; color: var(--text-dim);
+      padding: .3rem .7rem; border: 1px solid var(--line-hi); border-radius: 8px;
+      background: var(--panel); }
+
+    @media (max-width: 640px) {
+      .arch-row { flex-direction: column; align-items: stretch; }
+      .node { max-width: none; }
+      .arch-link { flex-direction: row; gap: .5rem; padding: .3rem 0; }
+      .arch-link i { transform: rotate(90deg); }
+      .modal-hd h3 { font-size: 1.35rem; }
+    }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 900px) {
@@ -313,12 +404,12 @@
 <!-- ============ HERO ============ -->
 <div class="hero">
   <div>
-    <div class="eyebrow"><span class="live"></span> Computer Vision Researcher · 4 years</div>
+    <div class="eyebrow"><span class="live"></span> Machine Learning &amp; Computer Vision · 4 years</div>
     <h1>Hi, I'm <span class="gtext">Srini</span> <span class="wave">👋</span></h1>
 
-    <p class="hero-lead">I teach machines to <b>see</b> — and robots to <b>act</b> on what they see.</p>
+    <p class="hero-lead">I build <b>machine learning</b> systems that help machines <b>see</b>, and robots <b>act</b> on what they see.</p>
     <p class="hero-sub">
-      I'm happiest in the messy middle: taking a model from a research idea all the way to something that actually runs on real hardware, in the real world. Robots, vision, and the occasional fire-fighting machine.
+      Four years across the machine learning stack, with a focus on computer vision: training and shipping models for detection, segmentation, pose, and 3D perception. I'm happiest in the messy middle, taking a model from a research idea all the way to something that actually runs on real hardware, in the real world.
     </p>
 
     <div class="hero-tags">
@@ -337,7 +428,7 @@
   <!-- photo story -->
   <div class="photos reveal">
     <div class="ph-main">
-      <a href="assets/iros/iros2.jpeg" target="_blank" rel="noopener"><img src="assets/iros/iros2.jpeg" alt="IROS 2025 — Hangzhou, China"></a>
+      <a href="assets/iros/iros2.jpeg" target="_blank" rel="noopener"><img src="assets/iros/iros2.jpeg" alt="IROS 2025, Hangzhou, China"></a>
       <div class="ph-cap">📍 Presenting at IROS 2025 · Hangzhou, China</div>
     </div>
     <div class="ph-row ph-3">
@@ -349,20 +440,20 @@
       <div class="ph-cell"><a href="assets/iros/iros5.jpeg" target="_blank" rel="noopener"><img src="assets/iros/iros5.jpeg" alt="IROS 2025"></a></div>
       <div class="ph-cell"><a href="assets/iros/iros6.jpeg" target="_blank" rel="noopener"><img src="assets/iros/iros6.jpeg" alt="IROS 2025"></a></div>
     </div>
-    <div class="ph-note">— IROS 2025, Hangzhou —</div>
+    <div class="ph-note">IROS 2025, Hangzhou</div>
     <div class="ph-row ph-2">
       <div class="ph-cell"><a href="assets/hannover/ki.jpeg" target="_blank" rel="noopener"><img src="assets/hannover/ki.jpeg" alt="KI Forum Hannover 2024"></a></div>
-      <div class="ph-cell"><a href="assets/iros/firebot.jpg" target="_blank" rel="noopener"><img src="assets/iros/firebot.jpg" alt="FireBot — TUniCorn 2023"></a></div>
+      <div class="ph-cell"><a href="assets/iros/firebot.jpg" target="_blank" rel="noopener"><img src="assets/iros/firebot.jpg" alt="FireBot, TUniCorn 2023"></a></div>
     </div>
-    <div class="ph-note">— KI Forum Hannover '24 · TUniCorn '23 —</div>
+    <div class="ph-note">KI Forum Hannover '24 · TUniCorn '23</div>
   </div>
 </div>
 
 <!-- ============ MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Computer Vision</span><span>Robotics</span><span>Diffusion Models</span><span>VLA</span><span>3D Reconstruction</span><span>Edge AI</span><span>Path Planning</span><span>Pose Estimation</span>
-    <span>Computer Vision</span><span>Robotics</span><span>Diffusion Models</span><span>VLA</span><span>3D Reconstruction</span><span>Edge AI</span><span>Path Planning</span><span>Pose Estimation</span>
+    <span>Computer Vision</span><span>Robotics</span><span>Diffusion Models</span><span>VLA</span><span>Self-Hosted LLMs</span><span>RAG</span><span>3D Reconstruction</span><span>Edge AI</span><span>Path Planning</span><span>Pose Estimation</span>
+    <span>Computer Vision</span><span>Robotics</span><span>Diffusion Models</span><span>VLA</span><span>Self-Hosted LLMs</span><span>RAG</span><span>3D Reconstruction</span><span>Edge AI</span><span>Path Planning</span><span>Pose Estimation</span>
   </div>
 </div>
 
@@ -374,18 +465,38 @@
       <h2 class="sec-title">Things I've <span class="gtext">built</span></h2>
     </div>
 
+    <!-- LLM Projects -->
+    <div class="pgroup reveal">
+      <div class="pg-head">
+        <span class="pg-num">01</span><span class="pg-name">LLM Projects</span>
+        <span class="pg-meta">self-hosted · RAG · full-stack</span>
+      </div>
+      <div class="pcards">
+        <div class="pcard feature clickable" onclick="openArch()" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openArch();}">
+          <span class="pc-badge">★ FULL-STACK · SELF-HOSTED</span>
+          <div class="pc-title">SriniKai: Private LLM Assistant</div>
+          <div class="pc-desc">A ChatGPT-style assistant that runs entirely on your own machine, with no API keys and no data leaving the host. FastAPI backend with accounts, long-term memory (RAG), web access, and an MCP server, in front of a local llama.cpp model.</div>
+          <div class="pc-tags"><span>llama.cpp</span><span>FastAPI</span><span>RAG · pgvector</span><span>JWT</span></div>
+          <div class="pc-more"><i class="fa-solid fa-arrow-right"></i> See the architecture &amp; how I built it</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Robotics -->
     <div class="pgroup reveal">
       <div class="pg-head">
-        <span class="pg-num">01</span><span class="pg-name">Robotics</span>
+        <span class="pg-num">02</span><span class="pg-name">Robotics</span>
         <span class="pg-meta">autonomy · manipulation · planning</span>
       </div>
       <div class="pcards">
-        <div class="pcard feature">
+        <div class="pcard feature clickable" onclick="openFare()" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFare();}">
           <span class="pc-badge">★ ACHIEVEMENT · IROS 2025</span>
-          <div class="pc-title">FaReCPP</div>
-          <div class="pc-desc">A novel fast-revisit coverage path planning algorithm for autonomous patrol robots. Presented as lead author at IROS 2025, Hangzhou.</div>
-          <div class="pc-tags"><span>Path Planning</span><span>UGV</span><span>LiDAR</span></div>
+          <div class="pc-title">FaRe-CPP</div>
+          <div class="pc-desc">A novel fast-revisit coverage path planning algorithm for autonomous patrol robots, using long-range sensor information. Presented as lead author at IROS 2025, Hangzhou.</div>
+          <div class="pc-tags"><span>Path Planning</span><span>ROS · Gazebo</span><span>C++ port</span></div>
+          <div class="pc-more"><i class="fa-solid fa-arrow-right"></i> See the architecture &amp; how I built it</div>
         </div>
         <div class="pcard">
           <div class="pc-title">FireBot / Warden Robotics</div>
@@ -394,7 +505,7 @@
         </div>
         <div class="pcard">
           <div class="pc-title">Baxter / Dexter Pick &amp; Place</div>
-          <div class="pc-desc">Vision-guided robotic manipulation — grasp detection and pick-and-place control on Baxter and Dexter robot arms.</div>
+          <div class="pc-desc">Vision-guided robotic manipulation: grasp detection and pick-and-place control on Baxter and Dexter robot arms.</div>
           <div class="pc-tags"><span>Manipulation</span><span>Grasping</span><span>Perception</span></div>
         </div>
       </div>
@@ -403,7 +514,7 @@
     <!-- Computer Vision -->
     <div class="pgroup reveal">
       <div class="pg-head">
-        <span class="pg-num">02</span><span class="pg-name">Computer Vision</span>
+        <span class="pg-num">03</span><span class="pg-name">Computer Vision</span>
         <span class="pg-meta">medical imaging · pose · perception</span>
       </div>
       <div class="pcards">
@@ -419,29 +530,9 @@
         </div>
         <div class="pcard">
           <div class="pc-title">KI4ALL</div>
-          <div class="pc-desc">Open educational modules on diffusion models, generative AI, and LLM-as-planner for robotics — practical PyTorch from the ground up.</div>
+          <div class="pc-desc">Open educational modules on diffusion models, generative AI, and LLM-as-planner for robotics, with practical PyTorch from the ground up.</div>
           <div class="pc-tags"><span>Diffusion</span><span>Generative AI</span><span>Teaching</span></div>
         </div>
-      </div>
-    </div>
-
-    <!-- ML & DL -->
-    <div class="pgroup reveal">
-      <div class="pg-head">
-        <span class="pg-num">03</span><span class="pg-name">Machine Learning &amp; Deep Learning</span>
-        <span class="pg-meta">core capabilities</span>
-      </div>
-      <div class="cap-grid">
-        <div class="cap"><i class="fa-solid fa-shield-halved"></i><span>Risk Assessment</span></div>
-        <div class="cap"><i class="fa-solid fa-tags"></i><span>Object Classification</span></div>
-        <div class="cap"><i class="fa-solid fa-vector-square"></i><span>Object Detection</span></div>
-        <div class="cap"><i class="fa-solid fa-layer-group"></i><span>Semantic Segmentation</span></div>
-        <div class="cap"><i class="fa-solid fa-object-group"></i><span>Instance Segmentation</span></div>
-        <div class="cap"><i class="fa-solid fa-mountain"></i><span>Depth Estimation</span></div>
-        <div class="cap"><i class="fa-solid fa-cubes"></i><span>3D Geometry Reconstruction</span></div>
-        <div class="cap"><i class="fa-solid fa-draw-polygon"></i><span>Mesh Reconstruction</span></div>
-        <div class="cap"><i class="fa-solid fa-image"></i><span>Text-to-Image</span></div>
-        <div class="cap"><i class="fa-solid fa-comment-dots"></i><span>Image-to-Text</span></div>
       </div>
     </div>
   </div>
@@ -468,6 +559,17 @@
         </div>
       </div>
       <div class="sk-card">
+        <h3>LLM &amp; Backend</h3>
+        <div class="sk-row">
+          <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" alt="FastAPI" loading="lazy"><span class="l">FastAPI</span></div>
+          <div class="sk-item"><div class="sk-box">llama<br>.cpp</div><span class="l">llama.cpp</span></div>
+          <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" loading="lazy"><span class="l">Postgres</span></div>
+          <div class="sk-item"><div class="sk-box">pg<br>vector</div><span class="l">pgvector</span></div>
+          <div class="sk-item"><div class="sk-box">RAG</div><span class="l">RAG</span></div>
+          <div class="sk-item"><div class="sk-box">MCP</div><span class="l">MCP</span></div>
+        </div>
+      </div>
+      <div class="sk-card">
         <h3>Deployment &amp; Robotics</h3>
         <div class="sk-row">
           <div class="sk-item"><div class="sk-box">Tensor<br>RT</div><span class="l">TensorRT</span></div>
@@ -483,7 +585,7 @@
         <div class="sk-row">
           <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy"><span class="l">Python</span></div>
           <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" loading="lazy"><span class="l">C++</span></div>
-          <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash" loading="lazy" style="filter:brightness(0) invert(.8)"><span class="l">Bash</span></div>
+          <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash" loading="lazy"><span class="l">Bash</span></div>
           <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="SQL" loading="lazy"><span class="l">SQL</span></div>
           <div class="sk-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" loading="lazy"><span class="l">Linux</span></div>
         </div>
@@ -512,7 +614,7 @@
     </div>
 
     <p class="pub-lead reveal">
-      Every one of these started as a working system — built, broken, and rebuilt long before it became a paper. They span <b>autonomous robotics</b>, <b>clinical AI</b>, and <b>human pose estimation</b>.
+      Every one of these started as a working system, built, broken, and rebuilt long before it became a paper. They span <b>autonomous robotics</b>, <b>clinical AI</b>, and <b>human pose estimation</b>.
     </p>
 
     <div class="reveal">
@@ -561,7 +663,7 @@
     </div>
 
     <p class="contact-lead reveal">
-      Open to research collaborations and roles in <b>computer vision, robotics, and physical AI</b>. Based in Braunschweig, Germany — fluent in English and German.
+      Open to research collaborations and roles in <b>computer vision, robotics, and physical AI</b>. Based in Braunschweig, Germany, and fluent in English and German.
     </p>
 
     <div class="cc-grid reveal">
@@ -590,6 +692,209 @@
   <div class="f2">Computer Vision · Robotics · Physical AI</div>
 </footer>
 
+<!-- ============ ARCHITECTURE MODAL: SriniKai ============ -->
+<div class="modal-overlay" id="archModal" onclick="if(event.target===this)closeArch()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="archTitle">
+    <div class="modal-hd">
+      <div>
+        <div class="mh-kick">// LLM project · deep dive</div>
+        <h3 id="archTitle">SriniKai: a private, self-hosted LLM assistant</h3>
+        <p>I wanted my own ChatGPT that never sends a single token to a third party. So I built the whole stack (a polished chat UI, a hardened API, retrieval memory, and tools) around a model that runs <b>entirely on my own hardware</b> via llama.cpp.</p>
+      </div>
+      <button class="modal-close" onclick="closeArch()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-bd">
+
+      <h4><i class="fa-solid fa-sitemap"></i> How it fits together</h4>
+      <div class="arch">
+        <div class="arch-row">
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-window-maximize"></i></div>
+            <div class="n-t">Frontend</div>
+            <div class="n-s">static HTML · single file</div>
+            <div class="n-d">Chat UI. Holds the JWT in localStorage and streams replies token-by-token. Never talks to the model directly.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">HTTPS</div>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            <div class="al-sub">SSE stream</div>
+          </div>
+          <div class="node accent">
+            <div class="n-ic"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="n-t">SriniKai API</div>
+            <div class="n-s">FastAPI · Python</div>
+            <div class="n-d">The brain. Auth, rate limiting, context assembly, and the <em>only</em> path to the model; it injects the system prompt and trims history.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">HTTP</div>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            <div class="al-sub">stream</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-microchip"></i></div>
+            <div class="n-t">llama-server</div>
+            <div class="n-s">llama.cpp · local</div>
+            <div class="n-d">The model itself (Gemma weights) running on the host, exposing an OpenAI-style API. No cloud, no keys.</div>
+          </div>
+        </div>
+
+        <div class="arch-down"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <div class="arch-sub">
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-database"></i></div>
+            <div class="n-t">SQL store</div>
+            <div class="n-s">SQLite (dev) · Postgres + pgvector (prod)</div>
+            <div class="n-d">Users, conversations, messages, and embedded memories for retrieval.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-toolbox"></i></div>
+            <div class="n-t">Tools</div>
+            <div class="n-s">web search · fetch · memory</div>
+            <div class="n-d">Keyless web search + page fetch (with an SSRF guard) and long-term memory retrieval.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-plug"></i></div>
+            <div class="n-t">MCP server</div>
+            <div class="n-s">Model Context Protocol</div>
+            <div class="n-d">The same tools exposed over MCP, so Claude Desktop / IDEs can call them too.</div>
+          </div>
+        </div>
+        <div class="arch-cap">the browser only ever talks to the API; the model server is never exposed</div>
+      </div>
+
+      <h4><i class="fa-solid fa-wand-magic-sparkles"></i> What happens in one chat turn</h4>
+      <div class="flow">
+        <div class="fstep"><div class="fn">1</div><div><div class="ft">Authenticate &amp; resolve</div><div class="fd">The request arrives with a <code>Bearer</code> JWT. Middleware checks CORS + per-IP rate limits, the token is verified, and the conversation is loaded, with ownership enforced by <code>user_id</code>.</div></div></div>
+        <div class="fstep"><div class="fn">2</div><div><div class="ft">Assemble context (RAG)</div><div class="fd">The message is embedded, then the top-k most relevant past memories are retrieved by cosine similarity and injected into the prompt. Optionally a live web search is folded in too.</div></div></div>
+        <div class="fstep"><div class="fn">3</div><div><div class="ft">Proxy to the model</div><div class="fd">System prompt + memory + trimmed history + the new message are sent to <code>llama-server</code> with <code>stream=true</code>. The proxy strips upstream model identifiers on the way out.</div></div></div>
+        <div class="fstep"><div class="fn">4</div><div><div class="ft">Stream &amp; persist</div><div class="fd">Tokens stream straight back to the browser as Server-Sent Events; when the turn completes, the assistant reply is saved and the message is stored as a new long-term memory.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-lock"></i> Built to be production-grade, not a toy</h4>
+      <div class="hl-grid">
+        <div class="hl"><i class="fa-solid fa-key"></i><div><div class="h-t">Real auth</div><div class="h-d">Passwords hashed with argon2; JWTs signed with a secret. The app refuses to boot in production with a default secret.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-network-wired"></i><div><div class="h-t">SSRF-guarded web access</div><div class="h-d">URL fetching blocks private, loopback and link-local targets, so the server can't be used as a proxy into the internal network.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-gauge-high"></i><div><div class="h-t">Hardened edges</div><div class="h-d">CORS allowlist, strict security headers on every response, rate limits, and generic errors that resist account enumeration.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-cloud"></i><div><div class="h-t">Deploys for real</div><div class="h-d">Dockerised stack (Postgres + pgvector, API, UI) with an AWS deployment guide; secrets via AWS Secrets Manager, never git.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-layer-group"></i> Stack</h4>
+      <div class="stack-row">
+        <span>llama.cpp</span><span>FastAPI</span><span>Python</span><span>Postgres</span><span>pgvector</span><span>SQLite</span><span>argon2</span><span>JWT</span><span>SSE streaming</span><span>Docker</span><span>AWS</span><span>MCP</span>
+      </div>
+
+      <p class="lede" style="margin-top:2rem">
+        <i class="fa-solid fa-circle-info" style="color:var(--cyan)"></i>
+        The takeaway: I can take an ML idea all the way to a secure, self-hosted product, with model serving, retrieval, a real API, auth, and deployment included.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ ARCHITECTURE MODAL: FaRe-CPP ============ -->
+<div class="modal-overlay" id="fareModal" onclick="if(event.target===this)closeFare()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="fareTitle">
+    <div class="modal-hd">
+      <div>
+        <div class="mh-kick">// robotics project · deep dive</div>
+        <h3 id="fareTitle">FaRe-CPP: fast-revisit coverage path planning</h3>
+        <p>How should a patrol robot move so that every part of a building is revisited as often as possible, as quickly as possible? I designed an algorithm that plans those patrol routes from a floor map, using the robot's long-range sensor so it covers more ground per stop. Lead-author work, published at IROS 2025.</p>
+      </div>
+      <button class="modal-close" onclick="closeFare()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-bd">
+
+      <h4><i class="fa-solid fa-sitemap"></i> How it fits together</h4>
+      <div class="arch">
+        <div class="arch-row">
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-map"></i></div>
+            <div class="n-t">Environment map</div>
+            <div class="n-s">occupancy grid · .pgm / .yaml</div>
+            <div class="n-d">A floor plan of the space as free / occupied cells, plus resolution and origin. The free area is measured up front.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">feeds</div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+          <div class="node accent">
+            <div class="n-ic"><i class="fa-solid fa-route"></i></div>
+            <div class="n-t">FaRe-CPP planner</div>
+            <div class="n-s">offline · Python + C++ port</div>
+            <div class="n-d">The core. Picks where to stop, orders those stops into the best revisit route, and stitches them into a drivable path.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">waypoints</div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-robot"></i></div>
+            <div class="n-t">Patrol execution</div>
+            <div class="n-s">ROS · Gazebo · TurtleBot3</div>
+            <div class="n-d">The optimized waypoints drive a robot patrolling the route in simulation (AWS RoboMaker / warehouse worlds).</div>
+          </div>
+        </div>
+
+        <div class="arch-down"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <div class="arch-sub">
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-tower-broadcast"></i></div>
+            <div class="n-t">Coverage goals</div>
+            <div class="n-s">long-range sensor model</div>
+            <div class="n-d">Sweeps the map and places viewpoints so the sensor's field of view covers the whole space in as few stops as possible.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-shuffle"></i></div>
+            <div class="n-t">Route optimization</div>
+            <div class="n-s">greedy + 2-opt (TSP-style)</div>
+            <div class="n-d">Orders the viewpoints into the shortest fast-revisit tour, accounting for turning cost, not just distance.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-ruler-combined"></i></div>
+            <div class="n-t">Path + metrics</div>
+            <div class="n-s">A* on the grid</div>
+            <div class="n-d">Connects stops with collision-free A* paths and reports revisit time from travel length and cumulative rotation.</div>
+          </div>
+        </div>
+        <div class="arch-cap">the planner runs offline; only the final waypoints are handed to the robot</div>
+      </div>
+
+      <h4><i class="fa-solid fa-wand-magic-sparkles"></i> How one plan is built</h4>
+      <div class="flow">
+        <div class="fstep"><div class="fn">1</div><div><div class="ft">Load the map</div><div class="fd">Read the occupancy grid (<code>.pgm</code>) and its metadata (<code>.yaml</code>), then estimate the total free area to cover.</div></div></div>
+        <div class="fstep"><div class="fn">2</div><div><div class="ft">Generate coverage goals</div><div class="fd">A frontier-style sweep places viewpoints using the robot's <code>surveillance_range</code>, so each stop sees as much new area as possible. Parallelized across processes for speed.</div></div></div>
+        <div class="fstep"><div class="fn">3</div><div><div class="ft">Optimize the revisit route</div><div class="fd">A greedy randomized construction plus <code>2-opt</code> local search orders the viewpoints into a short, balanced patrol loop, weighting rotation as well as distance.</div></div></div>
+        <div class="fstep"><div class="fn">4</div><div><div class="ft">Build the path and score it</div><div class="fd">A* links the ordered stops into collision-free motion; revisit time is computed from linear travel and cumulative turning, with before/after plots.</div></div></div>
+        <div class="fstep"><div class="fn">5</div><div><div class="ft">Patrol</div><div class="fd">The saved waypoints feed a ROS + Gazebo simulation where a TurtleBot3 executes the patrol in realistic indoor worlds.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-bolt"></i> What makes it work</h4>
+      <div class="hl-grid">
+        <div class="hl"><i class="fa-solid fa-clock-rotate-left"></i><div><div class="h-t">Fast-revisit objective</div><div class="h-d">Optimizes for how often each area is revisited, not just total coverage, which is what actually matters for patrol and surveillance.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-satellite-dish"></i><div><div class="h-t">Long-range sensing</div><div class="h-d">Uses the full sensor range when placing viewpoints, so the robot covers far more ground per stop than short-range coverage planners.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-gauge-high"></i><div><div class="h-t">C++ port, 10-100x faster</div><div class="h-d">A standalone C++ implementation of the offline planner removes the Python runtime for production-speed planning.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-flask"></i><div><div class="h-t">Validated in simulation</div><div class="h-d">Tested in AWS RoboMaker and Dynamic Logistics Warehouse worlds; published and presented at IROS 2025, Hangzhou.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-layer-group"></i> Stack</h4>
+      <div class="stack-row">
+        <span>Python</span><span>NumPy</span><span>C++</span><span>A* search</span><span>2-opt / TSP</span><span>Multiprocessing</span><span>ROS Noetic</span><span>Gazebo</span><span>TurtleBot3</span><span>AWS RoboMaker</span>
+      </div>
+
+      <p class="lede" style="margin-top:2rem">
+        <i class="fa-solid fa-circle-info" style="color:var(--cyan)"></i>
+        The takeaway: I can turn a research problem into a real algorithm, prove it in simulation, optimize it for speed in C++, and publish the result as lead author.
+      </p>
+
+    </div>
+  </div>
+</div>
+
 <script>
   // mouse spotlight
   const spot = document.getElementById('spot');
@@ -603,6 +908,15 @@
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // architecture modals
+  const archModal = document.getElementById('archModal');
+  const fareModal = document.getElementById('fareModal');
+  function openArch() { archModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeArch() { archModal.classList.remove('open'); document.body.style.overflow = ''; }
+  function openFare() { fareModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeFare() { fareModal.classList.remove('open'); document.body.style.overflow = ''; }
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') { closeArch(); closeFare(); } });
 </script>
 
 </body>

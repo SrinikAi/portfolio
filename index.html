@@ -172,9 +172,10 @@
     .marquee-track { display: flex; gap: 3rem; width: max-content; animation: scroll 28s linear infinite; }
     .marquee:hover .marquee-track { animation-play-state: paused; }
     .marquee-track span { font-family:'Space Grotesk'; font-size: 1.4rem; font-weight: 600;
-      color: transparent; -webkit-text-stroke: 1px var(--line-hi); white-space: nowrap;
-      display: inline-flex; align-items: center; gap: 3rem; }
-    .marquee-track span::after { content:'✦'; -webkit-text-stroke: 0; color: var(--cyan); font-size: .9rem; }
+      color: var(--text-dim); white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 3rem; transition: color .2s; }
+    .marquee-track span:hover { color: var(--text); }
+    .marquee-track span::after { content:'✦'; color: var(--cyan); font-size: .9rem; }
     @keyframes scroll { to { transform: translateX(-50%); } }
 
     /* ============ SECTION ============ */

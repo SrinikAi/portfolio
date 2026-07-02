@@ -13,20 +13,20 @@
   <style>
     /* ============ TOKENS ============ */
     :root {
-      --bg:        #eef1f7;
-      --panel:     rgba(15,23,42,.038);
-      --panel-hi:  rgba(15,23,42,.075);
-      --line:      rgba(15,23,42,.14);
-      --line-hi:   rgba(15,23,42,.24);
+      --bg:        #05070f;
+      --panel:     rgba(255,255,255,.03);
+      --panel-hi:  rgba(255,255,255,.06);
+      --line:      rgba(255,255,255,.09);
+      --line-hi:   rgba(255,255,255,.17);
 
-      --text:      #0d1424;
-      --text-dim:  #3c4658;
-      --text-mut:  #5a6678;
+      --text:      #eef2f8;
+      --text-dim:  #9aa6b8;
+      --text-mut:  #647082;
 
-      --cyan:      #0891b2;
-      --purple:    #7c3aed;
-      --pink:      #db2777;
-      --grad:      linear-gradient(115deg, #0891b2 0%, #7c3aed 55%, #db2777 100%);
+      --cyan:      #4fd6f7;
+      --purple:    #b388ff;
+      --pink:      #ff7eb6;
+      --grad:      linear-gradient(115deg, #4fd6f7 0%, #b388ff 55%, #ff7eb6 100%);
 
       --maxw: 1100px;
     }
@@ -49,27 +49,27 @@
     }
     .blob {
       position: absolute; border-radius: 50%;
-      filter: blur(95px); opacity: .28;
-      mix-blend-mode: multiply;
+      filter: blur(95px); opacity: .3;
+      mix-blend-mode: screen;
     }
-    .blob.b1 { width: 560px; height: 560px; background: #7fb5ec; top: -180px; left: -120px; animation: drift1 22s ease-in-out infinite; }
-    .blob.b2 { width: 520px; height: 520px; background: #c4b5fd; top: 5%; right: -160px; animation: drift2 26s ease-in-out infinite; }
-    .blob.b3 { width: 460px; height: 460px; background: #f9a8d4; bottom: -180px; left: 30%; animation: drift3 30s ease-in-out infinite; }
+    .blob.b1 { width: 560px; height: 560px; background: #123a72; top: -180px; left: -120px; animation: drift1 22s ease-in-out infinite; }
+    .blob.b2 { width: 520px; height: 520px; background: #3b1a78; top: 5%; right: -160px; animation: drift2 26s ease-in-out infinite; }
+    .blob.b3 { width: 460px; height: 460px; background: #5c1140; bottom: -180px; left: 30%; animation: drift3 30s ease-in-out infinite; }
     @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(120px,80px) scale(1.15)} }
     @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-100px,120px) scale(1.1)} }
     @keyframes drift3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(80px,-90px) scale(1.2)} }
 
-    /* grain/grid overlay */
-    .aurora::after {
-      content:''; position:absolute; inset:0;
-      background-image: radial-gradient(circle, rgba(15,23,42,.04) 1px, transparent 1px);
-      background-size: 40px 40px;
+    /* ---- space canvas (stars + neural net + rover) ---- */
+    #space {
+      position: fixed; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
     }
 
     /* ---- mouse spotlight ---- */
     .spotlight {
       position: fixed; inset: 0; z-index: 1; pointer-events: none;
-      background: radial-gradient(420px circle at var(--mx,50%) var(--my,30%), rgba(99,140,230,.12), transparent 65%);
+      background: radial-gradient(420px circle at var(--mx,50%) var(--my,30%), rgba(120,180,255,.08), transparent 65%);
       transition: background .12s;
     }
 
@@ -99,7 +99,7 @@
     header {
       position: sticky; top: 0; z-index: 100;
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      background: rgba(238,241,247,.72);
+      background: rgba(5,7,15,.6);
       border-bottom: 1px solid var(--line);
     }
     nav { max-width: var(--maxw); margin: auto; padding: 1.05rem 1.75rem;
@@ -111,8 +111,9 @@
     @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.35);opacity:.6} }
     .nav-links { display: flex; gap: .25rem; }
     .nav-links a { color: var(--text-dim); font-size: .87rem; font-weight: 500;
-      padding: .4rem .85rem; border-radius: 8px; transition: all .18s; }
+      padding: .4rem .85rem; border-radius: 8px; transition: all .18s; position: relative; }
     .nav-links a:hover { color: var(--text); background: var(--panel-hi); }
+    .nav-links a.active { color: var(--cyan); background: rgba(79,214,247,.08); }
 
     /* ============ HERO ============ */
     .hero { max-width: var(--maxw); margin: auto; padding: 6rem 1.75rem 4rem;
@@ -203,7 +204,7 @@
       -webkit-mask-composite: xor; mask-composite: exclude; opacity:0; transition: opacity .25s; }
     .pcard:hover { transform: translateY(-4px); background: var(--panel-hi); }
     .pcard:hover::before { opacity: .8; }
-    .pcard.feature { background: linear-gradient(135deg, rgba(8,145,178,.09), rgba(219,39,119,.08)); }
+    .pcard.feature { background: linear-gradient(135deg, rgba(79,214,247,.09), rgba(255,126,182,.08)); }
     .pc-badge { display: inline-block; font-family:'JetBrains Mono'; font-size: .68rem;
       letter-spacing: .5px; color: var(--cyan); margin-bottom: .65rem; }
     .pc-title { font-family:'Space Grotesk'; font-size: 1.15rem; font-weight: 600; margin-bottom: .5rem; }
@@ -233,7 +234,7 @@
     .sk-item img { width: 30px; height: 30px; object-fit: contain; }
     .sk-box { width: 30px; height: 30px; display:flex; align-items:center; justify-content:center;
       border-radius: 8px; font-family:'JetBrains Mono'; font-size: .58rem; font-weight: 600;
-      line-height: 1.05; text-align: center; background: rgba(8,145,178,.1); color: var(--cyan); }
+      line-height: 1.05; text-align: center; background: rgba(79,214,247,.1); color: var(--cyan); }
     .sk-emoji { width: 30px; height: 30px; display:flex; align-items:center; justify-content:center; font-size: 1.35rem; }
     .sk-item span.l { font-size: .68rem; color: var(--text-mut); text-align: center; line-height: 1.2; }
 
@@ -263,7 +264,7 @@
     .cc:hover { border-color: var(--cyan); background: var(--panel-hi); transform: translateY(-2px); }
     .cc-ic { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
       display:flex; align-items:center; justify-content:center; font-size: 1.1rem;
-      background: rgba(8,145,178,.08); color: var(--cyan); border: 1px solid rgba(8,145,178,.18); }
+      background: rgba(79,214,247,.08); color: var(--cyan); border: 1px solid rgba(79,214,247,.18); }
     .cc-txt { min-width: 0; flex: 1; }
     .cc .k { font-size: .73rem; color: var(--text-mut); margin-bottom: .1rem; }
     .cc .v { font-size: .88rem; font-weight: 600; color: var(--text);
@@ -282,17 +283,17 @@
 
     /* ============ ARCHITECTURE MODAL ============ */
     .modal-overlay { position: fixed; inset: 0; z-index: 1000; display: none;
-      background: rgba(20,28,48,.40); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      background: rgba(3,5,10,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       padding: 2.5rem 1.25rem; overflow-y: auto; }
     .modal-overlay.open { display: block; animation: fadeIn .3s ease; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .modal { max-width: 980px; margin: auto; background: #ffffff;
+    .modal { max-width: 980px; margin: auto; background: #0c101c;
       border: 1px solid var(--line-hi); border-radius: 22px; overflow: hidden;
-      box-shadow: 0 40px 120px rgba(15,23,42,.25); animation: pop .35s cubic-bezier(.2,.8,.2,1); }
+      box-shadow: 0 40px 120px rgba(0,0,0,.7); animation: pop .35s cubic-bezier(.2,.8,.2,1); }
     @keyframes pop { from { transform: translateY(24px) scale(.98); opacity: 0; } to { transform: none; opacity: 1; } }
     .modal-hd { position: sticky; top: 0; z-index: 5; display: flex; align-items: flex-start; gap: 1rem;
       padding: 1.6rem 1.9rem; border-bottom: 1px solid var(--line);
-      background: linear-gradient(135deg, rgba(8,145,178,.08), rgba(219,39,119,.06)), #ffffff; }
+      background: linear-gradient(135deg, rgba(79,214,247,.08), rgba(255,126,182,.06)), #0c101c; }
     .modal-hd .mh-kick { font-family:'JetBrains Mono'; font-size: .7rem; letter-spacing: 1px;
       color: var(--cyan); text-transform: uppercase; margin-bottom: .4rem; }
     .modal-hd h3 { font-size: 1.7rem; font-weight: 700; letter-spacing: -.6px; line-height: 1.1; }
@@ -314,10 +315,10 @@
     .arch-row { display: flex; align-items: stretch; justify-content: center; gap: .9rem; flex-wrap: wrap; }
     .node { flex: 1; min-width: 180px; max-width: 260px; background: var(--panel);
       border: 1px solid var(--line-hi); border-radius: 14px; padding: 1.1rem 1.15rem; position: relative; }
-    .node.accent { background: linear-gradient(135deg, rgba(8,145,178,.10), rgba(124,58,237,.08));
-      border-color: rgba(8,145,178,.32); }
+    .node.accent { background: linear-gradient(135deg, rgba(79,214,247,.10), rgba(179,136,255,.08));
+      border-color: rgba(79,214,247,.32); }
     .node .n-ic { width: 34px; height: 34px; border-radius: 9px; display:flex; align-items:center; justify-content:center;
-      background: rgba(8,145,178,.1); color: var(--cyan); font-size: .95rem; margin-bottom: .7rem; }
+      background: rgba(79,214,247,.1); color: var(--cyan); font-size: .95rem; margin-bottom: .7rem; }
     .node .n-t { font-family:'Space Grotesk'; font-weight: 600; font-size: .96rem; margin-bottom: .2rem; }
     .node .n-s { font-family:'JetBrains Mono'; font-size: .68rem; color: var(--text-mut); margin-bottom: .55rem; }
     .node .n-d { font-size: .8rem; color: var(--text-dim); line-height: 1.55; }
@@ -341,7 +342,7 @@
     .fstep .ft { font-weight: 600; font-size: .9rem; margin-bottom: .2rem; }
     .fstep .fd { font-size: .82rem; color: var(--text-dim); line-height: 1.55; }
     .fstep .fd code { font-family:'JetBrains Mono'; font-size: .76rem; color: var(--purple);
-      background: rgba(124,58,237,.08); padding: .05rem .35rem; border-radius: 5px; }
+      background: rgba(179,136,255,.08); padding: .05rem .35rem; border-radius: 5px; }
 
     /* ---- highlight chips (security / impact) ---- */
     .hl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: .8rem; }
@@ -387,6 +388,7 @@
 <body>
 
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<canvas id="space" aria-hidden="true"></canvas>
 <div class="spotlight" id="spot"></div>
 
 <!-- ============ NAV ============ -->
@@ -918,6 +920,392 @@
   function openFare() { fareModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeFare() { fareModal.classList.remove('open'); document.body.style.overflow = ''; }
   window.addEventListener('keydown', e => { if (e.key === 'Escape') { closeArch(); closeFare(); } });
+
+  // scrollspy — highlight the section currently in view
+  const spyLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const spyIO = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        spyLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  spyLinks.forEach(a => {
+    const sec = document.querySelector(a.getAttribute('href'));
+    if (sec) spyIO.observe(sec);
+  });
+
+  // gentle 3D tilt on project cards (pointer devices only)
+  if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+    document.querySelectorAll('.pcard').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - .5) * -5;
+        const ry = ((e.clientX - r.left) / r.width - .5) * 5;
+        card.style.transform = `translateY(-4px) perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    });
+  }
+
+  /* ================================================================
+     SPACE BACKGROUND — starfield + neural network that "thinks"
+     and sends decisions to a little patrol rover at the bottom.
+     ================================================================ */
+  (function () {
+    const cv = document.getElementById('space');
+    const cx = cv.getContext('2d');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const CYAN = '79,214,247', PURPLE = '179,136,255', PINK = '255,126,182';
+    const R = Math.random;
+
+    let W = 0, H = 0, DPR = 1;
+    let stars = [], beams = [], shots = [];
+    let frame = 0, shotT = 300;
+
+    // ---- layered neural network (input → hidden → decision) ----
+    const LAYERS = [4, 6, 6, 3, 1];
+    const INPUT_LABELS = ['LiDAR', 'RGB-D', 'IMU', 'Thermal'];
+    let layers = [], netEdges = [], outNode = null, netY0 = 0;
+    let pass = null, passT = 90;
+
+    const rover = { x: 200, dir: 1, v: .55, boost: 0, scan: 0, halt: 0, wheel: 0, label: null };
+
+    const DECISIONS = [
+      ['turn_left()',      () => { rover.dir = -1; }],
+      ['turn_right()',     () => { rover.dir = 1; }],
+      ['accelerate()',     () => { rover.boost = 200; }],
+      ['scan_area()',      () => { rover.scan = 170; }],
+      ['avoid_obstacle()', () => { rover.dir *= -1; rover.boost = 120; }],
+      ['patrol()',         () => { rover.halt = 0; }],
+      ['stop()',           () => { rover.halt = 130; }]
+    ];
+
+    function build() {
+      const small = W < 640;
+      stars = [];
+      const ns = small ? 70 : 160;
+      for (let i = 0; i < ns; i++) {
+        stars.push({
+          x: R() * W, y: R() * H,
+          r: .4 + R() * 1.1, p: R() * 6.28, s: .4 + R() * 1.4,
+          c: R() < .82 ? '235,242,255' : (R() < .5 ? CYAN : PURPLE)
+        });
+      }
+
+      // --- proper MLP: evenly spaced layers, fully connected ---
+      layers = []; netEdges = [];
+      const x0 = W * (small ? .16 : .26), x1 = W * (small ? .92 : .86);
+      const y0 = H * .10, y1 = H * .46;
+      netY0 = y0;
+      LAYERS.forEach((count, li) => {
+        const arr = [];
+        const x = x0 + (x1 - x0) * li / (LAYERS.length - 1);
+        // shorter layers are vertically centred within the band
+        const span = (y1 - y0) * (count === 1 ? 0 : (.4 + .6 * count / 6));
+        const yc = (y0 + y1) / 2;
+        for (let k = 0; k < count; k++) {
+          const y = count === 1 ? yc : yc - span / 2 + span * k / (count - 1);
+          arr.push({
+            x, y, li,
+            r: li === LAYERS.length - 1 ? 6 : (li === 0 ? 3.6 : 3),
+            a: 0, p: R() * 6.28
+          });
+        }
+        layers.push(arr);
+      });
+      for (let li = 0; li < layers.length - 1; li++)
+        layers[li].forEach(a => layers[li + 1].forEach(b =>
+          netEdges.push({ a, b, w: .15 + R() * .85 })));
+      outNode = layers[layers.length - 1][0];
+      pass = null; passT = 90;
+
+      rover.x = Math.min(Math.max(rover.x, 70), W - 70);
+    }
+
+    function resize() {
+      DPR = Math.min(devicePixelRatio || 1, 2);
+      W = innerWidth; H = innerHeight;
+      cv.width = W * DPR; cv.height = H * DPR;
+      cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      build();
+      if (reduced) drawStatic();
+    }
+
+    // gentle breathing so the lattice feels alive without losing structure
+    const nx = n => n.x + Math.sin(frame * .01 + n.p) * 1.5;
+    const ny = n => n.y + Math.cos(frame * .008 + n.p) * 1.5;
+
+    // ---- forward pass: activations sweep layer by layer ----
+    function startPass() {
+      pass = { layer: 0, t: 0 };
+      layers[0].forEach(n => n.a = .5 + R() * .5);
+    }
+
+    function stepPass() {
+      if (pass) {
+        pass.t += .02;
+        if (pass.t >= 1) {
+          const next = pass.layer + 1;
+          layers[next].forEach(n => n.a = .45 + R() * .55);
+          if (next === LAYERS.length - 1) {
+            decide();
+            pass = null; passT = 240 + R() * 260;
+          } else {
+            pass.layer = next; pass.t = 0;
+          }
+        }
+      } else if (--passT <= 0) startPass();
+    }
+
+    function decide() {
+      const [label, act] = DECISIONS[(R() * DECISIONS.length) | 0];
+      act();
+      rover.label = { txt: label, life: 170 };
+      beams.push({ x: nx(outNode), y: ny(outNode), life: 70, label });
+    }
+
+    /* ---------- drawing ---------- */
+    function drawStars(t) {
+      stars.forEach(s => {
+        const a = reduced ? .6 : .35 + .45 * Math.abs(Math.sin(t * .001 * s.s + s.p));
+        cx.fillStyle = `rgba(${s.c},${a})`;
+        cx.beginPath(); cx.arc(s.x, s.y, s.r, 0, 6.29); cx.fill();
+      });
+    }
+
+    function drawNet() {
+      const lastLi = LAYERS.length - 1;
+
+      // --- edges (weight → thickness/opacity; active layer lights up) ---
+      netEdges.forEach(e => {
+        const active = pass && e.a.li === pass.layer;
+        const al = active ? .12 + .3 * e.w : .04 + .09 * e.w;
+        cx.strokeStyle = `rgba(${CYAN},${al})`;
+        cx.lineWidth = active ? .8 + e.w : .6 + e.w * .5;
+        cx.beginPath();
+        cx.moveTo(nx(e.a), ny(e.a));
+        cx.lineTo(nx(e.b), ny(e.b));
+        cx.stroke();
+
+        // signal dots race along the strongest connections
+        if (active && e.w > .5) {
+          const x = nx(e.a) + (nx(e.b) - nx(e.a)) * pass.t;
+          const y = ny(e.a) + (ny(e.b) - ny(e.a)) * pass.t;
+          cx.fillStyle = `rgba(${CYAN},.18)`;
+          cx.beginPath(); cx.arc(x, y, 6.5, 0, 6.29); cx.fill();
+          cx.fillStyle = `rgba(${CYAN},.95)`;
+          cx.beginPath(); cx.arc(x, y, 2.2, 0, 6.29); cx.fill();
+        }
+      });
+
+      // --- nodes (activation → glow) ---
+      layers.forEach((arr, li) => arr.forEach(n => {
+        const x = nx(n), y = ny(n);
+        if (n.a > .03) {
+          cx.fillStyle = `rgba(${li === lastLi ? PINK : CYAN},${.28 * n.a})`;
+          cx.beginPath(); cx.arc(x, y, n.r + 7 * n.a, 0, 6.29); cx.fill();
+        }
+        cx.fillStyle = li === lastLi ? `rgba(${PINK},${.55 + .45 * n.a})`
+                     : li === 0      ? `rgba(${CYAN},${.5 + .5 * n.a})`
+                     : `rgba(235,242,255,${.38 + .6 * n.a})`;
+        cx.beginPath(); cx.arc(x, y, n.r, 0, 6.29); cx.fill();
+
+        if (li === lastLi) {
+          const ring = n.r + 4 + Math.sin(frame * .05) * 2;
+          cx.strokeStyle = `rgba(${PINK},${.4 + .5 * n.a})`; cx.lineWidth = 1.2;
+          cx.beginPath(); cx.arc(x, y, ring, 0, 6.29); cx.stroke();
+        }
+        n.a *= .975;
+      }));
+
+      // --- sensor labels + streaming data into the input layer ---
+      if (W > 760) {
+        cx.font = '10px "JetBrains Mono", monospace';
+        layers[0].forEach((n, i) => {
+          const x = nx(n), y = ny(n);
+          cx.textAlign = 'right';
+          cx.fillStyle = `rgba(${CYAN},.55)`;
+          cx.fillText(INPUT_LABELS[i] || '', x - 64, y + 3);
+          cx.strokeStyle = `rgba(${CYAN},.35)`; cx.lineWidth = 1;
+          cx.setLineDash([3, 5]); cx.lineDashOffset = -frame * .4;
+          cx.beginPath(); cx.moveTo(x - 58, y); cx.lineTo(x - 9, y); cx.stroke();
+          cx.setLineDash([]);
+        });
+
+        // layer captions
+        cx.textAlign = 'center';
+        cx.fillStyle = 'rgba(235,242,255,.3)';
+        cx.fillText('INPUT', layers[0][0].x, netY0 - 22);
+        cx.fillText('HIDDEN LAYERS', (layers[1][0].x + layers[LAYERS.length - 2][0].x) / 2, netY0 - 22);
+        cx.fillStyle = `rgba(${PINK},.5)`;
+        cx.fillText('DECISION', outNode.x, netY0 - 22);
+        cx.textAlign = 'left';
+      }
+    }
+
+    function drawBeams() {
+      const ry = H - 46;
+      for (let k = beams.length - 1; k >= 0; k--) {
+        const b = beams[k];
+        const al = b.life / 70;
+        const g = cx.createLinearGradient(b.x, b.y, rover.x, ry);
+        g.addColorStop(0, `rgba(${PINK},${.75 * al})`);
+        g.addColorStop(1, `rgba(${CYAN},${.75 * al})`);
+        cx.strokeStyle = g; cx.lineWidth = 1.4;
+        cx.setLineDash([7, 6]); cx.lineDashOffset = -frame * .8;
+        cx.beginPath(); cx.moveTo(b.x, b.y);
+        cx.quadraticCurveTo((b.x + rover.x) / 2 + 60, (b.y + ry) / 2 - 40, rover.x, ry - 14);
+        cx.stroke(); cx.setLineDash([]);
+
+        // decision label near the output node
+        cx.font = '11px "JetBrains Mono", monospace';
+        cx.fillStyle = `rgba(${PINK},${al})`;
+        cx.fillText('>> ' + b.label, b.x + 12, b.y - 10);
+
+        if (--b.life <= 0) beams.splice(k, 1);
+      }
+    }
+
+    function drawShots() {
+      if (--shotT <= 0) {
+        shotT = 420 + R() * 500;
+        shots.push({ x: R() * W * .8, y: R() * H * .3, vx: 7 + R() * 4, vy: 2.4 + R() * 1.6, life: 34 });
+      }
+      for (let k = shots.length - 1; k >= 0; k--) {
+        const s = shots[k], al = s.life / 34;
+        const g = cx.createLinearGradient(s.x, s.y, s.x - s.vx * 7, s.y - s.vy * 7);
+        g.addColorStop(0, `rgba(235,242,255,${.8 * al})`);
+        g.addColorStop(1, 'rgba(235,242,255,0)');
+        cx.strokeStyle = g; cx.lineWidth = 1.4;
+        cx.beginPath(); cx.moveTo(s.x, s.y); cx.lineTo(s.x - s.vx * 7, s.y - s.vy * 7); cx.stroke();
+        s.x += s.vx; s.y += s.vy;
+        if (--s.life <= 0) shots.splice(k, 1);
+      }
+    }
+
+    function drawRover() {
+      const y = H - 46;
+
+      // ground line
+      cx.strokeStyle = 'rgba(235,242,255,.06)';
+      cx.lineWidth = 1;
+      cx.beginPath(); cx.moveTo(0, y + 18); cx.lineTo(W, y + 18); cx.stroke();
+
+      // motion
+      if (rover.halt > 0) { rover.halt--; }
+      else if (rover.scan > 0) { rover.scan--; }
+      else {
+        const sp = rover.v * (rover.boost > 0 ? 2.3 : 1);
+        rover.x += rover.dir * sp;
+        rover.wheel += rover.dir * sp * .18;
+        if (rover.boost > 0) rover.boost--;
+      }
+      if (rover.x > W - 70) rover.dir = -1;
+      if (rover.x < 70) rover.dir = 1;
+
+      const x = rover.x, d = rover.dir;
+      cx.save(); cx.globalAlpha = .92;
+
+      // headlight cone
+      if (rover.halt <= 0 && rover.scan <= 0) {
+        const hg = cx.createLinearGradient(x + 20 * d, y, x + 95 * d, y);
+        hg.addColorStop(0, `rgba(${CYAN},.16)`); hg.addColorStop(1, 'rgba(0,0,0,0)');
+        cx.fillStyle = hg;
+        cx.beginPath();
+        cx.moveTo(x + 18 * d, y + 2);
+        cx.lineTo(x + 95 * d, y - 12); cx.lineTo(x + 95 * d, y + 16);
+        cx.closePath(); cx.fill();
+      }
+
+      // radar sweep while scanning
+      if (rover.scan > 0) {
+        const ang = frame * .09;
+        cx.strokeStyle = `rgba(${PURPLE},.5)`;
+        cx.beginPath(); cx.moveTo(x, y - 22);
+        cx.lineTo(x + Math.cos(ang) * 34, y - 22 + Math.sin(ang) * 18); cx.stroke();
+        cx.strokeStyle = `rgba(${PURPLE},.18)`;
+        cx.beginPath(); cx.arc(x, y - 22, 34, 0, 6.29); cx.stroke();
+      }
+
+      // mast + sensor head
+      cx.strokeStyle = `rgba(${CYAN},.75)`; cx.lineWidth = 2;
+      cx.beginPath(); cx.moveTo(x, y - 4); cx.lineTo(x, y - 20); cx.stroke();
+      cx.fillStyle = `rgba(${CYAN},.95)`;
+      cx.fillRect(x - 5, y - 26, 10, 7);
+      // blinking status LED
+      if (Math.sin(frame * .12) > 0) {
+        cx.fillStyle = `rgba(${PINK},.95)`;
+        cx.beginPath(); cx.arc(x, y - 30, 1.8, 0, 6.29); cx.fill();
+      }
+
+      // body
+      cx.fillStyle = 'rgba(22,30,48,.95)';
+      cx.strokeStyle = `rgba(${CYAN},.6)`; cx.lineWidth = 1.2;
+      roundRect(x - 24, y - 6, 48, 15, 5); cx.fill(); cx.stroke();
+      // eye light (direction)
+      cx.fillStyle = `rgba(${CYAN},.95)`;
+      cx.fillRect(x + (d > 0 ? 14 : -20), y - 2, 6, 3);
+
+      // wheels
+      [-15, 0, 15].forEach(o => {
+        cx.fillStyle = '#0a0e18';
+        cx.strokeStyle = 'rgba(235,242,255,.4)'; cx.lineWidth = 1.2;
+        cx.beginPath(); cx.arc(x + o, y + 11, 5.5, 0, 6.29); cx.fill(); cx.stroke();
+        cx.strokeStyle = `rgba(${CYAN},.7)`;
+        cx.beginPath();
+        cx.moveTo(x + o, y + 11);
+        cx.lineTo(x + o + Math.cos(rover.wheel) * 4, y + 11 + Math.sin(rover.wheel) * 4);
+        cx.stroke();
+      });
+
+      // decision label above the rover
+      if (rover.label) {
+        const al = Math.min(1, rover.label.life / 60);
+        cx.font = '11px "JetBrains Mono", monospace';
+        cx.textAlign = 'center';
+        cx.fillStyle = `rgba(${CYAN},${al})`;
+        cx.fillText('>> ' + rover.label.txt, x, y - 40);
+        cx.textAlign = 'left';
+        if (--rover.label.life <= 0) rover.label = null;
+      }
+      cx.restore();
+    }
+
+    function roundRect(x, y, w, h, r) {
+      cx.beginPath();
+      cx.moveTo(x + r, y);
+      cx.arcTo(x + w, y, x + w, y + h, r);
+      cx.arcTo(x + w, y + h, x, y + h, r);
+      cx.arcTo(x, y + h, x, y, r);
+      cx.arcTo(x, y, x + w, y, r);
+      cx.closePath();
+    }
+
+    function drawStatic() {
+      cx.clearRect(0, 0, W, H);
+      layers.forEach(arr => arr.forEach(n => n.a = .3));
+      drawStars(0);
+      drawNet();
+    }
+
+    function loop(t) {
+      frame++;
+      cx.clearRect(0, 0, W, H);
+      drawStars(t);
+      drawShots();
+      stepPass();
+      drawNet();
+      drawBeams();
+      drawRover();
+      requestAnimationFrame(loop);
+    }
+
+    addEventListener('resize', resize, { passive: true });
+    resize();
+    if (!reduced) requestAnimationFrame(loop);
+  })();
 </script>
 
 </body>

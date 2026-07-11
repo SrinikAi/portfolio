@@ -501,6 +501,13 @@
           <div class="pc-tags"><span>Path Planning</span><span>ROS · Gazebo</span><span>C++ port</span></div>
           <div class="pc-more"><i class="fa-solid fa-arrow-right"></i> See the architecture &amp; how I built it</div>
         </div>
+        <div class="pcard clickable" onclick="openRobo()" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openRobo();}">
+          <div class="pc-title">RoboBrain</div>
+          <div class="pc-desc">Robotic arm pick-and-place solved two ways: a classical kinematics controller vs. an RL agent trained in a custom Gymnasium environment over ROS2 and Gazebo, bootstrapped with imitation learning.</div>
+          <div class="pc-tags"><span>RL · Gymnasium</span><span>ROS2 · Gazebo</span><span>Kinematics</span></div>
+          <div class="pc-more"><i class="fa-solid fa-arrow-right"></i> See the architecture &amp; how I built it</div>
+        </div>
         <div class="pcard">
           <div class="pc-title">FireBot / Warden Robotics</div>
           <div class="pc-desc">Autonomous fire-detection patrol robot. Edge-deployed vision on Raspberry Pi, full ROS2 stack. Won TUniCorn 2023, became a startup.</div>
@@ -535,6 +542,23 @@
           <div class="pc-title">KI4ALL</div>
           <div class="pc-desc">Open educational modules on diffusion models, generative AI, and LLM-as-planner for robotics, with practical PyTorch from the ground up.</div>
           <div class="pc-tags"><span>Diffusion</span><span>Generative AI</span><span>Teaching</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ML Engineering -->
+    <div class="pgroup reveal">
+      <div class="pg-head">
+        <span class="pg-num">04</span><span class="pg-name">ML Engineering</span>
+        <span class="pg-meta">MLOps · automation · CI/CD</span>
+      </div>
+      <div class="pcards">
+        <div class="pcard clickable" onclick="openBot()" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBot();}">
+          <div class="pc-title">Issue Labeling Bot</div>
+          <div class="pc-desc">A GitHub App that triages issues automatically: a scikit-learn classifier predicts labels from issue text, applies them via the GitHub API, and learns from user corrections, a full MLOps loop from training to production.</div>
+          <div class="pc-tags"><span>scikit-learn</span><span>aiohttp</span><span>MLOps</span></div>
+          <div class="pc-more"><i class="fa-solid fa-arrow-right"></i> See the architecture &amp; how I built it</div>
         </div>
       </div>
     </div>
@@ -898,6 +922,210 @@
   </div>
 </div>
 
+<!-- ============ ARCHITECTURE MODAL: RoboBrain ============ -->
+<div class="modal-overlay" id="roboModal" onclick="if(event.target===this)closeRobo()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="roboTitle">
+    <div class="modal-hd">
+      <div>
+        <div class="mh-kick">// robotics project · deep dive</div>
+        <h3 id="roboTitle">RoboBrain: classical control vs. reinforcement learning</h3>
+        <p>Can a robot arm <b>learn</b> to pick and place as well as we can <b>program</b> it to? We built both: a classical controller with hand-derived kinematics, and an RL agent that taught itself the same task over 5000 episodes, bootstrapped by imitating the classical controller. Team project at Ostfalia University.</p>
+      </div>
+      <button class="modal-close" onclick="closeRobo()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-bd">
+
+      <h4><i class="fa-solid fa-sitemap"></i> How it fits together</h4>
+      <div class="arch">
+        <div class="arch-row">
+          <div class="node accent">
+            <div class="n-ic"><i class="fa-solid fa-brain"></i></div>
+            <div class="n-t">RL agent</div>
+            <div class="n-s">policy network · staged learning</div>
+            <div class="n-d">Learns the pick-and-place policy from observations and rewards, starting from imitation of the classical controller.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">action / obs</div>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            <div class="al-sub">reward</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-dumbbell"></i></div>
+            <div class="n-t">Gymnasium env</div>
+            <div class="n-s">custom QarmEnv</div>
+            <div class="n-d">Wraps the simulated arm in a standard RL interface: observations, rewards, resets, and collision signals.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">topics</div>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            <div class="al-sub">pub / sub</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-robot"></i></div>
+            <div class="n-t">ROS2 + Gazebo</div>
+            <div class="n-s">Humble · physics sim</div>
+            <div class="n-d">The simulated 4-DOF arm with gripper. Publishes joint states, executes joint commands, detects collisions.</div>
+          </div>
+        </div>
+
+        <div class="arch-down"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <div class="arch-sub">
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-square-root-variable"></i></div>
+            <div class="n-t">Classical controller</div>
+            <div class="n-s">FK / IK · trajectory planning</div>
+            <div class="n-d">Forward kinematics, gradient-descent inverse kinematics, and a pick → place → home state machine. The baseline to beat.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-database"></i></div>
+            <div class="n-t">Demonstration data</div>
+            <div class="n-s">imitation learning</div>
+            <div class="n-d">Trajectories recorded from the classical controller are cleaned, analyzed, and used to pre-train the RL agent.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-stairs"></i></div>
+            <div class="n-t">Staged curriculum</div>
+            <div class="n-s">6 stages · reach → grab → drop</div>
+            <div class="n-d">Training difficulty ramps up gradually: first reach without collisions, then tighter tolerances, then grasping and dropping.</div>
+          </div>
+        </div>
+        <div class="arch-cap">same task, two brains: the classical controller generates the data that gives the RL agent its head start</div>
+      </div>
+
+      <h4><i class="fa-solid fa-wand-magic-sparkles"></i> How the agent learned</h4>
+      <div class="flow">
+        <div class="fstep"><div class="fn">1</div><div><div class="ft">Solve it classically first</div><div class="fd">Model the arm's kinematics, derive <code>IK</code> via gradient descent over joint angles, and script the full pick-and-place cycle as the reliable baseline.</div></div></div>
+        <div class="fstep"><div class="fn">2</div><div><div class="ft">Collect demonstrations</div><div class="fd">Run the classical controller repeatedly and record joint states, poses, and outcomes as training data.</div></div></div>
+        <div class="fstep"><div class="fn">3</div><div><div class="ft">Wrap the sim as a Gym env</div><div class="fd">A custom <code>Gymnasium</code> environment bridges the RL loop to ROS2 and Gazebo: actions become joint commands, sensor topics become observations and rewards.</div></div></div>
+        <div class="fstep"><div class="fn">4</div><div><div class="ft">Train in stages</div><div class="fd">A six-stage curriculum: reach the target, survive collision detection, tighten accuracy with dynamic tolerance, then learn grabbing and dropping.</div></div></div>
+        <div class="fstep"><div class="fn">5</div><div><div class="ft">Compare at 5000 episodes</div><div class="fd">Track the agent from random flailing at episode 1 to purposeful reaching and manipulation, benchmarked against the classical controller.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-bolt"></i> What makes it interesting</h4>
+      <div class="hl-grid">
+        <div class="hl"><i class="fa-solid fa-scale-balanced"></i><div><div class="h-t">Two paradigms, one task</div><div class="h-d">A direct, honest comparison of hand-engineered control against learned control on identical hardware and scenarios.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-graduation-cap"></i><div><div class="h-t">Imitation bootstrapping</div><div class="h-d">The classical controller isn't thrown away; it becomes the teacher, generating demonstrations that pre-train the RL policy.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-stairs"></i><div><div class="h-t">Curriculum learning</div><div class="h-d">Staged difficulty (reach → grab → drop) with dynamic tolerances keeps the reward signal learnable at every step.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-people-group"></i><div><div class="h-t">Real team delivery</div><div class="h-d">Built by four developers with a product owner (Prof. Dr.-Ing. Peter Engel) at Ostfalia University, SoSe 2024.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-layer-group"></i> Stack</h4>
+      <div class="stack-row">
+        <span>Python</span><span>Reinforcement Learning</span><span>Gymnasium</span><span>ROS2 Humble</span><span>Gazebo</span><span>Forward / Inverse Kinematics</span><span>Simulink</span><span>Imitation Learning</span>
+      </div>
+
+      <p class="lede" style="margin-top:2rem">
+        <i class="fa-solid fa-circle-info" style="color:var(--cyan)"></i>
+        The takeaway: I understand robot control from both ends, the math of kinematics and the training loop of RL, and how to combine them so each covers the other's weaknesses.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ ARCHITECTURE MODAL: Issue Labeling Bot ============ -->
+<div class="modal-overlay" id="botModal" onclick="if(event.target===this)closeBot()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="botTitle">
+    <div class="modal-hd">
+      <div>
+        <div class="mh-kick">// ML engineering project · deep dive</div>
+        <h3 id="botTitle">Issue Labeling Bot: ML-powered issue triage for GitHub</h3>
+        <p>Triaging issues by hand is boring, so I taught a bot to do it. A GitHub App that catches every new issue the moment it's opened, predicts the right label with a text classifier, applies it, and politely asks the author to correct it if wrong, feeding those corrections back into training.</p>
+      </div>
+      <button class="modal-close" onclick="closeBot()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-bd">
+
+      <h4><i class="fa-solid fa-sitemap"></i> How it fits together</h4>
+      <div class="arch">
+        <div class="arch-row">
+          <div class="node">
+            <div class="n-ic"><i class="fa-brands fa-github"></i></div>
+            <div class="n-t">GitHub</div>
+            <div class="n-s">issues · webhooks</div>
+            <div class="n-d">A user opens an issue. GitHub fires a signed webhook event to the bot's public endpoint.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">webhook</div>
+            <i class="fa-solid fa-arrow-right"></i>
+            <div class="al-sub">signed payload</div>
+          </div>
+          <div class="node accent">
+            <div class="n-ic"><i class="fa-solid fa-server"></i></div>
+            <div class="n-t">Webhook API</div>
+            <div class="n-s">aiohttp · async Python</div>
+            <div class="n-d">Verifies the event signature (<code>GH_SECRET</code>), routes it, and orchestrates prediction and response.</div>
+          </div>
+          <div class="arch-link">
+            <div class="al-lbl">predict</div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-tags"></i></div>
+            <div class="n-t">Classifier</div>
+            <div class="n-s">scikit-learn · joblib</div>
+            <div class="n-d">A text classification model predicts the label from the issue's title and body.</div>
+          </div>
+        </div>
+
+        <div class="arch-down"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <div class="arch-sub">
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-reply"></i></div>
+            <div class="n-t">GitHub API response</div>
+            <div class="n-s">gidgethub</div>
+            <div class="n-d">The predicted label is applied and the bot comments asking the author for feedback.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <div class="n-t">Feedback loop</div>
+            <div class="n-s">corrections → retraining</div>
+            <div class="n-d">User-corrected labels flow back into the feature store, so the model improves with real usage.</div>
+          </div>
+          <div class="node">
+            <div class="n-ic"><i class="fa-solid fa-rocket"></i></div>
+            <div class="n-t">CI/CD</div>
+            <div class="n-s">GitHub Actions · Procfile</div>
+            <div class="n-d">Push to main builds and deploys the service; the same platform hosts the code and runs the bot.</div>
+          </div>
+        </div>
+        <div class="arch-cap">the bot labels its own training data: every correction from a user is a free labeled example</div>
+      </div>
+
+      <h4><i class="fa-solid fa-wand-magic-sparkles"></i> What happens on every new issue</h4>
+      <div class="flow">
+        <div class="fstep"><div class="fn">1</div><div><div class="ft">Receive &amp; verify</div><div class="fd">The webhook arrives at <code>POST /</code>; the payload signature is checked against the shared secret before anything is parsed.</div></div></div>
+        <div class="fstep"><div class="fn">2</div><div><div class="ft">Predict</div><div class="fd">Title and body are concatenated and passed to the scikit-learn pipeline, which returns the most likely label.</div></div></div>
+        <div class="fstep"><div class="fn">3</div><div><div class="ft">Act on GitHub</div><div class="fd">Via <code>gidgethub</code>, the label is applied to the issue and a friendly comment invites the author to correct it.</div></div></div>
+        <div class="fstep"><div class="fn">4</div><div><div class="ft">Learn</div><div class="fd">Corrections are collected as fresh labeled data, and the model is retrained, closing the MLOps loop.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-bolt"></i> Why it's more than a script</h4>
+      <div class="hl-grid">
+        <div class="hl"><i class="fa-solid fa-infinity"></i><div><div class="h-t">Full MLOps loop</div><div class="h-d">Development, deployment, serving, and monitoring: the model lives in production and its data pipeline feeds itself.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-bolt"></i><div><div class="h-t">Async by design</div><div class="h-d">Built on aiohttp so webhook bursts don't block; each event is handled in its own async task.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-shield-halved"></i><div><div class="h-t">Verified events</div><div class="h-d">Every payload is authenticated with the webhook secret, so nobody can spoof issues into the pipeline.</div></div></div>
+        <div class="hl"><i class="fa-solid fa-comments"></i><div><div class="h-t">Human in the loop</div><div class="h-d">The bot asks for feedback instead of pretending to be perfect, turning users into annotators.</div></div></div>
+      </div>
+
+      <h4><i class="fa-solid fa-layer-group"></i> Stack</h4>
+      <div class="stack-row">
+        <span>Python</span><span>aiohttp</span><span>scikit-learn</span><span>joblib</span><span>gidgethub</span><span>GitHub Apps</span><span>GitHub Actions</span><span>Procfile / PaaS</span>
+      </div>
+
+      <p class="lede" style="margin-top:2rem">
+        <i class="fa-solid fa-circle-info" style="color:var(--cyan)"></i>
+        The takeaway: I can ship a model as a living product, served async in production, wired into a real platform, and improving from its own users. Code on <a href="https://github.com/SrinikAi/github_app_v1.1" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+
+    </div>
+  </div>
+</div>
+
 <script>
   // mouse spotlight
   const spot = document.getElementById('spot');
@@ -915,11 +1143,17 @@
   // architecture modals
   const archModal = document.getElementById('archModal');
   const fareModal = document.getElementById('fareModal');
+  const roboModal = document.getElementById('roboModal');
+  const botModal = document.getElementById('botModal');
   function openArch() { archModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeArch() { archModal.classList.remove('open'); document.body.style.overflow = ''; }
   function openFare() { fareModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeFare() { fareModal.classList.remove('open'); document.body.style.overflow = ''; }
-  window.addEventListener('keydown', e => { if (e.key === 'Escape') { closeArch(); closeFare(); } });
+  function openRobo() { roboModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeRobo() { roboModal.classList.remove('open'); document.body.style.overflow = ''; }
+  function openBot() { botModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeBot() { botModal.classList.remove('open'); document.body.style.overflow = ''; }
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') { closeArch(); closeFare(); closeRobo(); closeBot(); } });
 
   // scrollspy — highlight the section currently in view
   const spyLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
